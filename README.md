@@ -5,7 +5,7 @@
 ## Структура проекта
 
 ```
-bitr.r4s.ru-DEV/
+bitrix-docker/
 ├── docker-compose.yml          # Конфигурация Docker сервисов
 ├── .env                        # Переменные окружения (создать из .env.example)
 ├── .env.example                # Шаблон переменных окружения
@@ -31,7 +31,7 @@ bitr.r4s.ru-DEV/
 
 ```bash
 git clone <your-repo-url>
-cd bitr.r4s.ru-DEV
+cd bitrix-docker
 ```
 
 ### 2. Настройка переменных окружения
@@ -117,7 +117,7 @@ chmod +x deploy/deploy.sh
 ssh user@test-server
 
 # Перейдите в директорию проекта
-cd /path/to/bitr.r4s.ru-DEV
+cd /path/to/bitrix-docker
 
 # Обновите код из Git
 git pull origin main
