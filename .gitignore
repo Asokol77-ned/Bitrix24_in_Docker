@@ -1,0 +1,45 @@
+# Переменные окружения
+.env
+.env.local
+.env.*.local
+
+# Директория Bitrix - исключаем загруженные файлы и кеш
+bitrix/upload/
+bitrix/bitrixcache/
+bitrix/managed_cache/
+bitrix/stack_cache/
+bitrix/html_pages/
+bitrix/backup/
+bitrix/tmp/
+bitrix/.settings.php
+bitrix/.settings_extra.php
+
+# База данных
+*.sql
+*.sql.gz
+*.dump
+
+# Docker volumes
+db_data/
+
+# Логи
+*.log
+logs/
+
+# Временные файлы
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node modules (если используются)
+node_modules/
+npm-debug.log
+yarn-error.log

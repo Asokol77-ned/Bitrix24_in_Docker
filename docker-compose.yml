@@ -1,0 +1,39 @@
+services:
+  # Сервис базы данных
+  db:
+    image: dockerhub.timeweb.cloud/mariadb:10.11
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  # Сервис PHP-FPM
+  php:
+    build: ./php
+    restart: always
+    volumes:
+      - ./bitrix:/var/www/html
+      - ./php/conf.d/bitrix.ini:/usr/local/etc/php/conf.d/bitrix.ini
+    depends_on:
+      - db
+
+  # Сервис Nginx
+  nginx:
+    image: dockerhub.timeweb.cloud/nginx:1.24
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./bitrix:/var/www/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+
+volumes:
+  db_data:
